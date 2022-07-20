@@ -1,11 +1,11 @@
 local CUDA_DEVICE = std.parseInt(std.extVar("CUDA_VISIBLE_DEVICES"));
 
-local LEARNING_RATE = 1.0993071205018916e-05;
+local LEARNING_RATE = 2.4721914839468448e-05;
 local BATCH_SIZE = 96;
-local NUM_EPOCHS = 24;
-local SEED = 36891;
+local NUM_EPOCHS = 20;
+local SEED = 80965;
 
-local TASK = "MNLI";
+local TASK = "SST-2";
 local DATA_DIR = "data/glue/" + TASK;
 local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 
