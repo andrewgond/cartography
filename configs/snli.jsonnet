@@ -6,7 +6,7 @@ local NUM_EPOCHS = 23;
 local SEED = 93078;
 
 local TASK = "SNLI";
-local DATA_DIR = "data/glue/" + TASK;
+local DATA_DIR = "datasets/glue/" + TASK;
 local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 
 local TEST = "/home/swabhas/data/glue/SNLI/diagnostic_test.tsv";

@@ -6,7 +6,7 @@ local NUM_EPOCHS = 20;
 local SEED = 80965;
 
 local TASK = "QNLI";
-local DATA_DIR = "data/glue/" + TASK;
+local DATA_DIR = "datasets/glue/" + TASK;
 local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 
 {

@@ -6,10 +6,10 @@ local NUM_EPOCHS = 20;
 local SEED = 71789;
 
 local TASK = "WINOGRANDE";
-local DATA_DIR = "data/glue/" + TASK + "/xl/" + TASK;
+local DATA_DIR = "datasets/glue/" + TASK + "/xl/" + TASK;
 local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 
-local TEST = "data/glue/WINOGRANDE/wsc_superglue_trval_test.tsv";
+local TEST = "datasets/glue/WINOGRANDE/wsc_superglue_trval_test.tsv";
 
 {
    "data_dir": DATA_DIR,
