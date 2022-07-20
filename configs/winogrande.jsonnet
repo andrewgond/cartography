@@ -14,7 +14,7 @@ local TEST = "datasets/glue/WINOGRANDE/wsc_superglue_trval_test.tsv";
 {
    "data_dir": DATA_DIR,
    "model_type": "roberta_mc",
-   "model_name_or_path": "roberta-large",
+   "model_name_or_path": "distilroberta-base",
    "task_name": TASK,
    "seed": SEED,
    "num_train_epochs": NUM_EPOCHS,

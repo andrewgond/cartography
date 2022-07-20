@@ -12,7 +12,7 @@ local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 {
    "data_dir": DATA_DIR,
    "model_type": "roberta",
-   "model_name_or_path": "roberta-large",
+   "model_name_or_path": "distilroberta-base",
    "task_name": TASK,
    "seed": SEED,
    "num_train_epochs": NUM_EPOCHS,

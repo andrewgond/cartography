@@ -14,7 +14,7 @@ local TEST = "/home/swabhas/data/glue/SNLI/diagnostic_test.tsv";
 {
    "data_dir": DATA_DIR,
    "model_type": "roberta",
-   "model_name_or_path": "roberta-large",
+   "model_name_or_path": "distilroberta-base",
    "task_name": TASK,
    "seed": SEED,
    "num_train_epochs": NUM_EPOCHS,
