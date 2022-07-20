@@ -36,7 +36,7 @@ if __name__ == "__main__":
   parser.add_argument("--task_name",
                       "-t",
                       default="SNLI",
-                      choices=("SNLI", "MNLI", "WINOGRANDE", "QNLI"),
+                      choices=("SNLI", "MNLI", "WINOGRANDE", "QNLI", "SST-2"),
                       help="Name of GLUE-style task.",)
   parser.add_argument("--seed",
                       type=int,
