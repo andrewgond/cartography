@@ -28,10 +28,10 @@ This repository is based on the [HuggingFace Transformers](https://github.com/hu
 To train a GLUE-style model using this repository:
 
 ```
-python -m cartography.classification.run_glue \
-    -c configs/$TASK.jsonnet \
-    --do_train \
-    --do_eval \
+python -m cartography.classification.run_glue
+    -c configs/$TASK.jsonnet
+    --do_train
+    --do_eval
     -o $MODEL_OUTPUT_DIR
 ```
 The best configurations for our experiments for each of the `$TASK`s (SNLI, MNLI, QNLI or WINOGRANDE) are provided under [configs](./configs).
@@ -50,10 +50,10 @@ The `.jsonl` file must contain the following fields for every training instance:
 To plot data maps for a trained `$MODEL` (e.g. RoBERTa-Large) on a given `$TASK` (e.g. SNLI, MNLI, QNLI or WINOGRANDE):
 
 ```
-python -m cartography.selection.train_dy_filtering \
-    --plot \
-    --task_name $TASK \
-    --model_dir $PATH_TO_MODEL_OUTPUT_DIR_WITH_TRAINING_DYNAMICS \
+python -m cartography.selection.train_dy_filtering
+    --plot
+    --task_name $TASK
+    --model_dir $PATH_TO_MODEL_OUTPUT_DIR_WITH_TRAINING_DYNAMICS
     --model $MODEL_NAME
 ```
 
@@ -72,11 +72,11 @@ The coordinates for producing RoBERTa-Large data maps for SNLI, QNLI, MNLI and W
 To select (different amounts of) data based on various metrics from training dynamics:
 
 ```
-python -m cartography.selection.train_dy_filtering \
-    --filter \
-    --task_name $TASK \
-    --model_dir $PATH_TO_MODEL_OUTPUT_DIR_WITH_TRAINING_DYNAMICS \
-    --metric $METRIC \
+python -m cartography.selection.train_dy_filtering
+    --filter
+    --task_name $TASK
+    --model_dir $PATH_TO_MODEL_OUTPUT_DIR_WITH_TRAINING_DYNAMICS
+    --metric $METRIC
     --data_dir $PATH_TO_GLUE_DIR_WITH_ORIGINAL_DATA_IN_TSV_FORMAT
 ```
 
