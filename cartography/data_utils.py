@@ -39,7 +39,9 @@ def read_data(file_path: str,
     return read_glue_tsv(file_path,
                         guid_index=0)
   elif task_name == "SST-2":
-    return read_glue_tsv(file_path, guid_index=0)
+    return read_glue_tsv(file_path,
+                        guid_index=0,
+                        guid_as_int=guid_as_int)
   else:
     raise NotImplementedError(f"Reader for {task_name} not implemented.")
 
