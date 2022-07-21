@@ -349,7 +349,7 @@ if __name__ == "__main__":
                       help="Directory where model training dynamics stats reside.")
   parser.add_argument("--data_dir",
                       "-d",
-                      default="/Users/swabhas/data/glue/WINOGRANDE/xl/",
+                      default="datasets/glue/WINOGRANDE/xl/",
                       type=os.path.abspath,
                       help="Directory where data for task resides.")
   parser.add_argument("--plots_dir",

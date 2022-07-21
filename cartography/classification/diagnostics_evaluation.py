@@ -133,7 +133,7 @@ def evaluate_by_category(predictions,
                          eval_filename,
                          mnli_hack = False,
                          diagnostics_file_carto = None,
-                         diagnostics_file_original="/home/swabhas/diagnostics_nli/diagnostic-full.tsv"):
+                         diagnostics_file_original="diagnostics_nli/diagnostic-full.tsv"):
   if not diagnostics_file_carto and not os.path.exists(diagnostics_file_carto):
     diag_test_modifier(diagnostics_file_original, diagnostics_file_carto)
 
@@ -207,12 +207,12 @@ if __name__ == "__main__":
 
   parser.add_argument("--diagnostics_input",
                       "-i",
-                      type=os.path.abspath,
-                      default="/home/swabhas/diagnostic_nli/diagnostic-full.tsv")
+                      type=os.path.relpath,
+                      default="diagnostic_nli/diagnostic-full.tsv")
   parser.add_argument("--output",
                       "-o",
-                      type=os.path.abspath,
-                      default="/home/swabhas/data/glue/SNLI/diagnostics_test_bugfree.tsv")
+                      type=os.path.relpath,
+                      default="datasets/glue/SNLI/diagnostics_test_bugfree.tsv")
 
   args = parser.parse_args()
   logger.info(args)

@@ -9,7 +9,7 @@ local TASK = "SNLI";
 local DATA_DIR = "datasets/glue/" + TASK;
 local FEATURES_CACHE_DIR = DATA_DIR + "/cache_" + SEED ;
 
-local TEST = "/home/swabhas/data/glue/SNLI/diagnostic_test.tsv";
+local TEST = "datasets/glue/SNLI/diagnostic_test.tsv";
 
 {
    "data_dir": DATA_DIR,
