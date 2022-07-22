@@ -24,13 +24,11 @@ This repository is based on the [HuggingFace Transformers](https://github.com/hu
 
 ### Available formatted datasets:
 
-Datasets should go in the relative path 'datasets/glue/$dataset', formatted with train.tsv, test.tsv, and dev.tsv. 
+GLUE datasets should go in the relative path `datasets/glue/$TASK`. 
 
 [MNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/MNLI.zip) 
 
 [SNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/SNLI.zip)
-
-[WinoGrande Dataset](https://storage.googleapis.com/ai2-mosaic/public/winogrande/winogrande_1.1.zip)
 
 [QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip)
 
