@@ -22,6 +22,19 @@ This repository can be used to build Data Maps, like [this one for SNLI using a 
 This repository is based on the [HuggingFace Transformers](https://github.com/huggingface/transformers) library.
 <!-- Hyperparameter tuning is based on [HFTune](https://github.com/allenai/hftune). -->
 
+### Available formatted datasets:
+
+Datasets should go in the relative path 'datasets/glue/$dataset', formatted with train.tsv, test.tsv, and dev.tsv. 
+
+[MNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/MNLI.zip) 
+
+[SNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/SNLI.zip)
+
+[WinoGrande Dataset](https://storage.googleapis.com/ai2-mosaic/public/winogrande/winogrande_1.1.zip)
+
+[QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip)
+
+[SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip)
 
 ### Train GLUE-style model and compute training dynamics
 
