@@ -223,14 +223,21 @@ def write_filtered_data(args, train_dy_metrics):
       for idx in selection_iterator:
         selection_iterator.set_description(
           f"{args.metric} = {selected.iloc[idx][args.metric]:.4f}")
-
+          
         selected_id = selected.iloc[idx]["guid"]
+        if args.task_name in ["SST-2"]:
+          selected_id = selected.iloc[idx]["index"]
+          selected_id = int(selected_id)
         if args.task_name in ["SNLI", "MNLI"]:
           selected_id = int(selected_id)
         elif args.task_name == "WINOGRANDE":
           selected_id = str(int(selected_id))
-        record = train_numeric[selected_id]
-        outfile.write(record + "\n")
+
+        try:
+          record = train_numeric[selected_id]
+          outfile.write(record + "\n")
+        except:
+          print("Missing data. Index: ",selected_id)
 
     logger.info(f"Wrote {num_samples} samples to {outdir}.")
 
