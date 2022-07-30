@@ -6,7 +6,7 @@ if len(sys.argv) != 3:
     exit()
 
 print("Importing...")
-full_train = pd.read_csv(sys.argv[1], sep='\t', header=0)
+full_train = pd.read_csv(sys.argv[1], sep='\t', header=0, keep_default_na=False)
 print("Imported! Now shuffling...")
 shuffled = full_train.sample(frac=1)
 print("Shuffled! Now saving...")
