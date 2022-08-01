@@ -2,7 +2,7 @@ local CUDA_DEVICE = std.parseInt(std.extVar("CUDA_VISIBLE_DEVICES"));
 
 local LEARNING_RATE = 1.1235456034244052e-05;
 local BATCH_SIZE = 64;
-local NUM_EPOCHS = 20;
+local NUM_EPOCHS = 6;
 local SEED = 71789;
 
 local TASK = "WINOGRANDE";

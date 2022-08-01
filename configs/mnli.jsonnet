@@ -2,7 +2,7 @@ local CUDA_DEVICE = std.parseInt(std.extVar("CUDA_VISIBLE_DEVICES"));
 
 local LEARNING_RATE = 1.0993071205018916e-05;
 local BATCH_SIZE = 96;
-local NUM_EPOCHS = 24;
+local NUM_EPOCHS = 6;
 local SEED = 36891;
 
 local TASK = "MNLI";
