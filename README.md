@@ -1,6 +1,6 @@
 # Dataset Cartography
 
-Code for the paper [Dataset Cartography: Mapping and Diagnosing Datasets with Training Dynamics](https://aclanthology.org/2020.emnlp-main.746) at EMNLP 2020.
+Modified code for the paper [Dataset Cartography: Mapping and Diagnosing Datasets with Training Dynamics](https://aclanthology.org/2020.emnlp-main.746) at EMNLP 2020.
 
 This repository contains implementation of data maps, as well as other data selection baselines, along with notebooks for data map visualizations.
 
@@ -139,7 +139,7 @@ A filtered and/or shuffled train.tsv file can be substituted for the one in `dat
 
 ### Contact and Reference
 
-For questions and usage issues, please contact `swabhas@allenai.org`. If you use dataset cartography for research, please cite [our paper](https://aclanthology.org/2020.emnlp-main.746) as follows:
+For questions and usage issues, please contact `swabhas@allenai.org`. If you use dataset cartography for research, please cite the [original paper](https://aclanthology.org/2020.emnlp-main.746) as follows:
 
 ```
 @inproceedings{swayamdipta-etal-2020-dataset,
