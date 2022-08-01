@@ -22,17 +22,34 @@ This repository can be used to build Data Maps, like [this one for SNLI using a 
 This repository is based on the [HuggingFace Transformers](https://github.com/huggingface/transformers) library.
 <!-- Hyperparameter tuning is based on [HFTune](https://github.com/allenai/hftune). -->
 
+### Installation
+
+Clone the repository with:
+
+```
+git clone https://github.com/okaycoffee/cartography.git
+```
+
+
+Download the Python modules with:
+
+```
+ pip install -r requirements.txt
+```
+
+Edit batch size and number of epochs to fit computing power in `configs/$TASK.jsonnet`
+
 ### Available formatted datasets:
 
 GLUE datasets should go in the relative path `datasets/glue/$TASK`. 
 
-[MNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/MNLI.zip) 
+[MNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/MNLI.zip) (Plotting and filtering)
 
-[SNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/SNLI.zip)
+[SNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/SNLI.zip) (Plotting and filtering)
 
-[QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip)
+[QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip) (Only plotting)
 
-[SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip)
+[SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip) (Only plotting)
 
 ### Train GLUE-style model and compute training dynamics
 
@@ -49,7 +66,7 @@ The best configurations for our experiments for each of the `$TASK`s (SNLI, MNLI
 
 This produces a training dynamics directory `$MODEL_OUTPUT_DIR/training_dynamics`, see a sample [here](./sample/training_dynamics/).
 
-*Note:* you can use any other set up to train your model (independent of this repository) as long as you produce the `dynamics_epoch_$X.jsonl` for plotting data maps, and filtering different regions of the data.
+*Note:* you can use any other setup to train your model (independent of this repository) as long as you produce the `dynamics_epoch_$X.jsonl` for plotting data maps, and filtering different regions of the data.
 The `.jsonl` file must contain the following fields for every training instance:
 - `guid` : instance ID matching that in the original data file, for filtering,
 - `logits_epoch_$X` : logits for the training instance under epoch `$X`,
@@ -58,7 +75,7 @@ The `.jsonl` file must contain the following fields for every training instance:
 
 ### Plot Data Maps
 
-To plot data maps for a trained `$MODEL` (e.g. RoBERTa-Large) on a given `$TASK` (e.g. SNLI, MNLI, QNLI or WINOGRANDE):
+To plot data maps for a trained `$MODEL` (e.g. RoBERTa-Large) on a given `$TASK` (e.g. SNLI, MNLI, QNLI, SST, or WINOGRANDE):
 
 ```
 python -m cartography.selection.train_dy_filtering
@@ -91,11 +108,19 @@ python -m cartography.selection.train_dy_filtering
     --data_dir $PATH_TO_GLUE_DIR_WITH_ORIGINAL_DATA_IN_TSV_FORMAT
 ```
 
-Supported `$TASK`s include SNLI, QNLI, MNLI and WINOGRANDE, and `$METRIC`s include `confidence`, `variability`, `correctness`, `forgetfulness` and `threshold_closeness`; see [paper](https://aclanthology.org/2020.emnlp-main.746) for more details.
-
+`$METRIC`s include `confidence`, `variability`, `correctness`, `forgetfulness` and `threshold_closeness`; see [paper](https://aclanthology.org/2020.emnlp-main.746) for more details.
 
 To select _hard-to-learn_ instances, set `$METRIC` as "confidence" and for _ambiguous_, set `$METRIC` as "variability". For _easy-to-learn_ instances: set `$METRIC` as "confidence" and use the flag `--worst`.
 
+Will output a directory called "filtered" with different percentages of the examples based on the `$METRIC` in the format of `cartography_$METRIC_$PERCENTAGE`.
+
+### Shuffling Datasets
+
+Shuffle the filtered train.tsv files to remove any order bias with:
+
+```
+python scripts/tsv_shuffle.py $INPUT_TSV $OUTPUT_TSV
+```
 
 ### Contact and Reference
 
