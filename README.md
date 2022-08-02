@@ -55,6 +55,14 @@ GLUE datasets should go in the relative path `datasets/glue/$TASK`.
 
 [SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip) (Plotting only)
 
+For example, to get the SNLI dataset:
+```
+mkdir -p datasets/glue/
+cd datasets/glue/
+wget https://dl.fbaipublicfiles.com/glue/data/SNLI.zip
+unzip SNLI.zip
+```
+
 ### Train GLUE-style model and compute training dynamics
 
 To train a GLUE-style model using this repository:
