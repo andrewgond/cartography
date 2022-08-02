@@ -74,7 +74,7 @@ python -m cartography.classification.run_glue
     --do_eval
     -o $MODEL_OUTPUT_DIR
 ```
-The best configurations for our experiments for each of the `$TASK`s (SNLI, MNLI, QNLI or WINOGRANDE) are provided under [configs](./configs).
+The best configurations for our experiments for each of the `$TASK`s (SNLI, MNLI, QNLI, SST-2, or WINOGRANDE) are provided under [configs](./configs).
 
 This produces a training dynamics directory `$MODEL_OUTPUT_DIR/training_dynamics`, see a sample [here](./sample/training_dynamics/).
 
@@ -85,9 +85,9 @@ The `.jsonl` file must contain the following fields for every training instance:
 - `gold` : index of the gold label, must match the logits array.
 
 
-### Plot Data Maps
+### (Optional) Plot Data Maps
 
-To plot data maps for a trained `$MODEL` (e.g. RoBERTa-Large) on a given `$TASK` (e.g. SNLI, MNLI, QNLI, SST, or WINOGRANDE):
+To plot data maps for a trained `$MODEL` (e.g. RoBERTa-Large) on a given `$TASK` (e.g. SNLI, MNLI, QNLI, SST-2, or WINOGRANDE:
 
 ```
 python -m cartography.selection.train_dy_filtering
@@ -99,7 +99,7 @@ python -m cartography.selection.train_dy_filtering
 
 #### Data Map Coordinates
 
-The coordinates for producing RoBERTa-Large data maps for SNLI, QNLI, MNLI and WINOGRANDE, as reported in the paper can be found under `data/data_map_coordinates/`. Each `.jsonl` file contains the following fields for each instance in the train set:
+The coordinates for producing RoBERTa-Large data maps for SNLI, QNLI, MNLI and WINOGRANDE, as reported in the original paper can be found under `data/data_map_coordinates/`. Each `.jsonl` file contains the following fields for each instance in the train set:
 - `guid` : instance ID matching that in the original data file,
 - `index`,
 - `confidence`,
