@@ -73,9 +73,9 @@ shuffled.to_csv("easyhardambi.tsv", sep="\t", index=False)
 # training on new sets
 
 for model_name in ["full", "rand", "easy", "hard", "ambi", "easyhard", "easyambi", "hardambi", "easyhardambi"]: 
+    os.system("rm -rf datasets/glue/SNLI/cache*")
     os.system("mv " + model_name + ".tsv datasets/glue/SNLI/train.tsv")
     os.system("python -m cartography.classification.run_glue -c configs/snli.jsonnet --do_train --do_eval --do_test --overwrite_output_dir -o model-" + model_name)
-    os.system("rm -rf datasets/glue/SNLI/cache*")
 
 # print final accuracies
 
