@@ -139,7 +139,7 @@ A filtered and/or shuffled train.tsv file can be substituted for the one in `dat
 
 ### Contact and Reference
 
-For questions and usage issues, please contact `swabhas@allenai.org`. If you use dataset cartography for research, please cite the [original paper](https://aclanthology.org/2020.emnlp-main.746) as follows:
+For questions and usage issues relating to the __original project__, please contact `swabhas@allenai.org`. If you use dataset cartography for research, please cite the [original paper](https://aclanthology.org/2020.emnlp-main.746) as follows:
 
 ```
 @inproceedings{swayamdipta-etal-2020-dataset,
@@ -161,5 +161,8 @@ For questions and usage issues, please contact `swabhas@allenai.org`. If you use
     pages = "9275--9293",
 }
 ```
+
+For questions or problems relating to this fork, please open an issue.
+
 Copyright [2020] [Swabha Swayamdipta]
 
