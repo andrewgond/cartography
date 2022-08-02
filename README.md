@@ -130,7 +130,7 @@ A filtered and/or shuffled train.tsv file can be substituted for the one in `dat
 | 100.00%                                                 | 0.8781                       | 0.8948             | 0.8962              |
 | 33.33% random                                              | 0.8565                       | 0.8718             | 0.8705              |
 | 33.33% easy-to-learn                                       | 0.9988                       | 0.8258             | 0.8245              |
-| 33.33% hard-to-learn                                       | 0.523                        | 0.5527             | 0.5333              |
+| 33.33% hard-to-learn                                       | 0.5230                        | 0.5527             | 0.5333              |
 | 33.33% ambiguous                                           | 0.7231                       | 0.8746             | 0.8804              |
 | 16.67% easy-to-learn<br>16.67% hard-to-learn                  | 0.7448                       | 0.6469             | 0.5075              |
 | 16.67% easy-to-learn<br>16.67% ambiguous                      | 0.8779                       | 0.8780              | 0.6470               |
