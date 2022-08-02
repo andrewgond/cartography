@@ -30,6 +30,10 @@ Clone the repository with:
 git clone https://github.com/okaycoffee/cartography.git
 ```
 
+Enter the `cartography` directory with:
+```
+cd cartography
+```
 
 Download the Python modules with:
 
@@ -37,9 +41,9 @@ Download the Python modules with:
  pip install -r requirements.txt
 ```
 
-Edit batch size and number of epochs to fit computing power in `configs/$TASK.jsonnet`
+Edit the batch size and number of epochs for your system in `configs/$TASK.jsonnet`. You will need at least 4 GiB of VRAM regardless of configuration.
 
-### Available formatted datasets:
+### Available datasets:
 
 GLUE datasets should go in the relative path `datasets/glue/$TASK`. 
 
@@ -47,9 +51,9 @@ GLUE datasets should go in the relative path `datasets/glue/$TASK`.
 
 [SNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/SNLI.zip) (Plotting and filtering)
 
-[QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip) (Only plotting)
+[QNLI Dataset](https://dl.fbaipublicfiles.com/glue/data/QNLI.zip) (Plotting only)
 
-[SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip) (Only plotting)
+[SST-2 Dataset](https://dl.fbaipublicfiles.com/glue/data/SST-2.zip) (Plotting only)
 
 ### Train GLUE-style model and compute training dynamics
 
