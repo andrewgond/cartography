@@ -195,7 +195,7 @@ def write_filtered_data(args, train_dy_metrics):
   original_train_file = os.path.join(os.path.join(args.data_dir, args.task_name), f"train.tsv")
   train_numeric, header = read_data(original_train_file, task_name=args.task_name, guid_as_int=True)
 
-  for fraction in [0.01, 0.05, 0.1111, 0.1667, 0.25, 0.3333, 0.50, 0.75]:
+  for fraction in [0.1111, 0.1667, 0.3333]:
     outdir = os.path.join(args.filtering_output_dir,
                           f"cartography_{args.metric}_{fraction:.2f}/{args.task_name}")
     if not os.path.exists(outdir):
