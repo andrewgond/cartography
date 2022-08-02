@@ -63,6 +63,13 @@ wget https://dl.fbaipublicfiles.com/glue/data/SNLI.zip
 unzip SNLI.zip
 ```
 
+### Automated run (SNLI)
+
+For an automated run of our experiment:
+```
+python -m scripts.automated
+```
+
 ### Train GLUE-style model and compute training dynamics
 
 To train a GLUE-style model using this repository:
