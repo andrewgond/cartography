@@ -146,15 +146,15 @@ A filtered and/or shuffled train.tsv file can be substituted for the one in `dat
 
 |                                                         | Final Training Accuracy (ID) | Dev Accuracy (OOD) | Test Accuracy (OOD) |
 | ------------------------------------------------------- | ---------------------------- | ------------------ | ------------------- |
-| 100.00%                                                 | 0.8781                       | 0.8948             | 0.8962              |
-| 33.33% random                                              | 0.8565                       | 0.8718             | 0.8705              |
-| 33.33% easy-to-learn                                       | 0.9988                       | 0.8258             | 0.8245              |
-| 33.33% hard-to-learn                                       | 0.5230                        | 0.5527             | 0.5333              |
-| 33.33% ambiguous                                           | 0.7231                       | 0.8746             | 0.8804              |
-| 16.67% easy-to-learn<br>16.67% hard-to-learn                  | 0.7448                       | 0.6469             | 0.5075              |
-| 16.67% easy-to-learn<br>16.67% ambiguous                      | 0.8779                       | 0.8780              | 0.6470               |
-| 16.67% hard-to-learn<br>16.67% ambiguous                      | 0.5792                       | 0.4449             | 0.8771              |
-| 11.11% easy-to-learn<br>11.11% hard-to-learn<br>11.11% ambiguous | 0.7286                       | 0.5152             | 0.4367              |
+| 100.00%                                                 | 0.8936                       | 0.8997             | 0.8976              |
+| 33.33% random                                              | 0.8782                       | 0.8776             | 0.8785              |
+| 33.33% easy-to-learn                                       | 0.9996                       | 0.8293             | 0.8286              |
+| 33.33% hard-to-learn                                       | 0.5680                        | 0.5966             | 0.5856              |
+| 33.33% ambiguous                                           | 0.7684                       | 0.8878             | 0.8894              |
+| 16.67% easy-to-learn<br>16.67% hard-to-learn                  | 0.7581                       | 0.5938             | 0.5999              |
+| 16.67% easy-to-learn<br>16.67% ambiguous                      | 0.8835                       | 0.8802              | 0.8807               |
+| 16.67% hard-to-learn<br>16.67% ambiguous                      | 0.5900                       | 0.4076             | 0.4023              |
+| 11.11% easy-to-learn<br>11.11% hard-to-learn<br>11.11% ambiguous | 0.7401                       | 0.5249             | 0.5145              |
 
 ### Contact and Reference
 
