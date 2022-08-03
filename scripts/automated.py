@@ -81,9 +81,9 @@ for model_name in ["full", "rand", "easy", "hard", "ambi", "easyhard", "easyambi
 
 for model_name in ["full", "rand", "easy", "hard", "ambi", "easyhard", "easyambi", "hardambi", "easyhardambi"]: 
     print("\n" + model_name)
-    train_acc = pd.read_json("model-" + model_name + "/eval_metrics_train.json", lines=True)["train_acc"][-1]
+    train_acc = pd.read_json("model-" + model_name + "/eval_metrics_train.json", lines=True)["train_acc"].iloc[-1]
     print("train accuracy: " + str(train_acc))
-    dev_acc = pd.read_json("model-" + model_name + "/eval_metrics_snli_dev_.json", lines=True)["acc"][0]
+    dev_acc = pd.read_json("model-" + model_name + "/eval_metrics_snli_dev_.json", lines=True)["acc"].iloc[0]
     print("dev accuracy: " + str(dev_acc))
-    test_acc = pd.read_json("model-" + model_name + "/eval_metrics_snli_test_.json", lines=True)["acc"][0]
+    test_acc = pd.read_json("model-" + model_name + "/eval_metrics_snli_test_.json", lines=True)["acc"].iloc[0]
     print("test accuracy: " + str(test_acc))

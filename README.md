@@ -69,7 +69,7 @@ For an automated run of our experiment:
 ```
 python -m scripts.automated
 ```
-
+Results will be diplayed in the terminal once complete.
 ### Train GLUE-style model and compute training dynamics
 
 To train a GLUE-style model using this repository:
