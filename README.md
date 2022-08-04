@@ -1,19 +1,7 @@
 # Dataset Cartography
 
-Modified code for the paper [Dataset Cartography: Mapping and Diagnosing Datasets with Training Dynamics](https://aclanthology.org/2020.emnlp-main.746) at EMNLP 2020.
+Institute for Computing in Research project. The paper is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputro_DataMapsSlideshow.pdf).
 
-This repository contains implementation of data maps, as well as other data selection baselines, along with notebooks for data map visualizations.
-
-If using, please cite:
-```
-@inproceedings{swayamdipta2020dataset,
-    title={Dataset Cartography: Mapping and Diagnosing Datasets with Training Dynamics},
-    author={Swabha Swayamdipta and Roy Schwartz and Nicholas Lourie and Yizhong Wang and Hannaneh Hajishirzi and Noah A. Smith and Yejin Choi},
-    booktitle={Proceedings of EMNLP},
-    url={https://arxiv.org/abs/2009.10795},
-    year={2020}
-}
-```
 This repository can be used to build Data Maps, like [this one for SNLI using a RoBERTa-Large classifier](./sample/SNLI_RoBERTa.pdf).
 ![SNLI Data Map with RoBERTa-Large](./sample/SNLI_RoBERTa.png)
 
@@ -70,6 +58,7 @@ For an automated run of our experiment:
 python -m scripts.automated
 ```
 Results will be diplayed in the terminal once complete.
+
 ### Train GLUE-style model and compute training dynamics
 
 To train a GLUE-style model using this repository:
@@ -156,32 +145,6 @@ A filtered and/or shuffled train.tsv file can be substituted for the one in `dat
 | 16.67% hard-to-learn<br>16.67% ambiguous                      | 0.5900                       | 0.4076             | 0.4023              |
 | 11.11% easy-to-learn<br>11.11% hard-to-learn<br>11.11% ambiguous | 0.7401                       | 0.5249             | 0.5145              |
 
-### Contact and Reference
-
-For questions and usage issues relating to the __original project__, please contact `swabhas@allenai.org`. If you use dataset cartography for research, please cite the [original paper](https://aclanthology.org/2020.emnlp-main.746) as follows:
-
-```
-@inproceedings{swayamdipta-etal-2020-dataset,
-    title = "Dataset Cartography: Mapping and Diagnosing Datasets with Training Dynamics",
-    author = "Swayamdipta, Swabha  and
-      Schwartz, Roy  and
-      Lourie, Nicholas  and
-      Wang, Yizhong  and
-      Hajishirzi, Hannaneh  and
-      Smith, Noah A.  and
-      Choi, Yejin",
-    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
-    month = nov,
-    year = "2020",
-    address = "Online",
-    publisher = "Association for Computational Linguistics",
-    url = "https://aclanthology.org/2020.emnlp-main.746",
-    doi = "10.18653/v1/2020.emnlp-main.746",
-    pages = "9275--9293",
-}
-```
-
-For questions or problems relating to this fork, please open an issue.
+(Original Code)
 
 Copyright [2020] [Swabha Swayamdipta]
-
