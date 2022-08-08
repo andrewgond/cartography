@@ -1,6 +1,6 @@
 # Dataset Cartography
 
-Institute for Computing in Research project. The paper is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputro_DataMapsPaper.pdf), and the slideshow is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputro_DataMapsSlideshow.pdf).
+Institute for Computing in Research project. The paper is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputroDataMapsPaper.pdf), and the slideshow is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputroDataMapsSlides.pdf).
 
 This repository can be used to build Data Maps, like [this one for SNLI using a RoBERTa-Large classifier](./sample/SNLI_RoBERTa.pdf).
 ![SNLI Data Map with RoBERTa-Large](./sample/SNLI_RoBERTa.png)
