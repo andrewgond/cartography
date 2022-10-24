@@ -8,7 +8,7 @@
 
 
 \newcommand{\abstracttext}{\noindent
-	Rapid development in deep learning model construction has prompted an increased need for appropriate training data. The popularity of large datasets - sometimes known as “big data” - has diverted attention from assessing their quality. Training on large datasets often requires excessive system resources and an infeasible amount of time. Furthermore, the supervised machine learning process has yet to be fully automated: for supervised learning, large datasets require more time for manually labeling samples. We propose a method of curating smaller datasets with comparable out-of-distribution model accuracy after an initial training session using an appropriate distribution of samples classified by how difficult it is for a model to learn from them. 
+	Rapid development in deep learning model construction has prompted an increased need for appropriate training data. The popularity of large datasets - sometimes known as ``big data'' - has diverted attention from assessing their quality. Training on large datasets often requires excessive system resources and an infeasible amount of time. Furthermore, the supervised machine learning process has yet to be fully automated: for supervised learning, large datasets require more time for manually labeling samples. We propose a method of curating smaller datasets with comparable out-of-distribution model accuracy after an initial training session using an appropriate distribution of samples classified by how difficult it is for a model to learn from them. 
 }
 
 
@@ -103,15 +103,15 @@
 	
 	\section{Introduction}
 	
-	Though larger datasets are often preferred for deep learning to maximize out-of-distribution accuracy, their benefits begin to diminish at a particular size (\cite{banko-brill-2001-mitigating}). A dataset's efficiency can be defined qualitatively as the accuracy of a model trained on it relative to the amount of time and resources needed to produce the model. Our work utilizes the PyTorch Dataset Cartography project (\cite{swayamdipta2020dataset}) to evaluate metrics of individual samples (dubbed "training dynamics") in a dataset after training. By using training dynamics to represent the correctness, confidence, and variability in a model's prediction for a sample's label, we can categorize samples by their difficulty for the model to learn. With groups of these samples, we can craft a new data subset. Ideally, a data subset constructed from a certain proportion of hard-to-learn, easy-to-learn, and ambiguous samples could achieve comparable real-world performance while requiring a fraction of the memory and training time.
+	Though larger datasets are often preferred for deep learning to maximize out-of-distribution accuracy, their benefits begin to diminish at a particular size (\cite{banko-brill-2001-mitigating}). A dataset's efficiency can be defined qualitatively as the accuracy of a model trained on it relative to the amount of time and resources needed to produce the model. Our work utilizes the PyTorch Dataset Cartography project (\cite{swayamdipta2020dataset}) to evaluate metrics of individual samples (dubbed ``training dynamics'') in a dataset after training. By using training dynamics to represent the correctness, confidence, and variability in a model's prediction for a sample's label, we can categorize samples by their difficulty for the model to learn. With groups of these samples, we can craft a new data subset. Ideally, a data subset constructed from a certain proportion of hard-to-learn, easy-to-learn, and ambiguous samples could achieve comparable real-world performance while requiring a fraction of the memory and training time.
 	
 	\section{Background}
 	
 	\subsection{Datasets}
 	
-	The Dataset Cartography project is designed for use with several GLUE-style datasets. For this project, we used the Stanford Natural Language Inference (SNLI) Corpus (\cite{snli:emnlp2015}). All GLUE-style datasets are stored in the TSV (tab-separated-value) format.
+	The Dataset Cartography project is designed for use with several GLUE-style datasets. For this project, we used the Stanford Natural Language Inference (SNLI) Corpus (\cite{snli:emnlp2015}). All GLUE-style datasets are stored in the TSV (tab-separated value) format.
 	
-	The SNLI dataset contains two statements per sample. The pair is assigned a gold label\footnote{A label declared to be accurate, usually by a human.} - entailment, contradiction, or neutral. The model is trained to predict the label of a new sentence pair using the train split\footnote{A portion of the entire dataset.} of the data. The model is then tested on the out-of-distribution dev split before returning to training, and then finally tested on the test split.
+	The SNLI dataset contains two statements per sample. During model production, each pair is assigned a gold label\footnote{A label declared accurate, usually by a human.} - entailment, contradiction, or neutral - based on how the second statement relates to the first. The model is trained to predict the label of a new sentence pair using the train split\footnote{A portion of the entire dataset.} of the data. The model's out-of-distribution accuracy is measured by predicting labels for samples in the out-of-distribution dev split before returning to training. Once training has concluded, the model's performance is evaluated on the out-of-distribution test split.
 	
 	\begin{table*}[!ht]
 		\centering
@@ -128,17 +128,17 @@
 	
 	\subsection{Data Maps}
 	
-	Manually estimating the effectiveness of each sample in a dataset for training can be costly and time-consuming. The Dataset Cartography project was first proposed as a way to characterize samples in a dataset with a chart. The samples in a model’s training sequence are plotted according to their training dynamics, where the y-axis represents a model’s confidence in its prediction for the sample and the, x-axis represents the variability in confidence. These metrics allow both humans and computers to identify from which samples the model learns easily and which ones it struggles to learn.
+	Manually estimating the effectiveness of each sample in a dataset for training can be costly and time-consuming. The Dataset Cartography project was first proposed as a way to characterize samples in a dataset through a scatter plot. Following model evaluation, the samples in the model’s training sequence are plotted according to their training dynamics. The y-axis represents a model’s confidence in its prediction for the sample, and the x-axis represents the variability in its confidence. These metrics can allow humans and computers to identify from which samples the model learns easily and from those it struggles with.
 	
-	The Dataset Cartography project records new metrics after every epoch of training. They are used to label every example in a training split with its correctness, confidence, variability, threshold closeness, and forgetfulness. Correctness represents the fraction of epochs in which the model predicted the label for a given sample correctly. Confidence is a metric within the range of [0, 1] that measures the mean of the model’s probabilities of a sample being labeled correctly across epochs. Variability is the standard deviation of these probabilities. While the program also calculates metrics like forgetfulness and threshold closeness, they are used for neither plotting nor filtering.
+	The Dataset Cartography project records new metrics after every epoch of training. These metrics are used to label every example in a training split with its correctness, confidence, and variability. Correctness represents the fraction of epochs in which the model correctly predicted the label for a given sample. Confidence is a numeric metric between 0 and 1 that measures the mean of the model’s probabilities of a sample being labeled correctly across epochs. Variability is the standard deviation of these probabilities. 
 	
-	Based on the confidence and variability of a data point, the project classifies it into one of three categories: easy-to-learn, hard-to-learn, or ambiguous. Easy-to-learn examples generally have low variability and high confidence, hard-to-learn examples had low variability and low confidence, and ambiguous examples have high variability. 
+	Based on the confidence and variability of a data point, the project classifies it into one of three categories: easy-to-learn, hard-to-learn, or ambiguous. Easy-to-learn samples generally have low variability and high confidence, hard-to-learn samples have low variability and low confidence, and ambiguous samples have high variability. 
 	
-	Labeling data points in this way allows for data subsets to be filtered from the original dataset based on specific criteria; for example, the samples the model found easiest to learn from can be described as those with the highest confidence. The project allows for a selection of samples - i.e. the 33\% of samples with the highest confidence - to be filtered into a new data subset. Our method uses this feature to create new data subsets.
+	Labeling data points in this way allows for data subsets to be filtered from the original dataset based on specific criteria; for example, the samples the model found easiest to learn from can be described as those with the highest confidence. The project allows for a selection of samples - i.e., the 33\% of samples with the highest confidence - to be filtered into a new data subset. Our method uses this feature to create new data subsets.
 	
-	The original paper introducing the Dataset Cartography project describes several out-of-dataset accuracy tests. The authors evaluated the accuracy of models trained on the top 33\% easiest-to-learn, hardest-to-learn, and most ambiguous samples. The model trained on the ambiguous samples most consistently predicted the correct label for both in-distribution and out-of-distribution data.
+	The original paper introducing the Dataset Cartography project describes several out-of-dataset accuracy tests. The authors evaluated the accuracy of models trained on the top 33\% easiest-to-learn, hardest-to-learn, and most ambiguous samples. The model trained on the ambiguous samples predicted the correct label for both in-distribution and out-of-distribution data most consistently.
 	
-	However, further tests revealed that small ambiguous datasets performed worse. This phenomenon could indicate that ambiguous samples alone were not sufficient for learning and that there may be a combination of sample types with better performance. 
+	However, further evaluations revealed that small ambiguous datasets performed worse. This phenomenon could indicate that ambiguous samples alone were insufficient for learning and that there may be a combination of sample types with superior performance. 
 	
 	\begin{figure}[!ht]
 		\includegraphics[scale=0.75]{data_map.png}\caption{A data map for a DistilRoBERTa-base model trained on the SNLI dataset without shuffling.}
@@ -146,19 +146,19 @@
 	
 	\section{Methods}
 	
-	Our goal was to expand upon the training analysis from the original Dataset Cartography project paper. We used DistilRoBERTa with the SNLI corpus for training and evaluation.
+	Our goal was to expand upon the training analysis from the original Dataset Cartography project paper. We used the DistilRoBERTa-base transformers model and the SNLI corpus for training and evaluation.
 	
-	We trained the entire dataset for six epochs to classify samples as easy-to-learn, hard-to-learn, or ambiguous. Using the filtering function, we sorted by the confidence metric to get the hardest-to-learn and easiest-to-learn samples. We also sorted by the variability metric to get the most ambiguous samples. We then created nine new subsets after filtering the labeled data: a copy of the original dataset, but with shuffled samples; a randomly selected 33\% sample of the original dataset; three 33\% datasets, or one for the top 33\% of each of the categories; three 16.67\% + 16.67\% datasets, with the three possible combinations of the categories (i.e. 16.67\% easy-to-learn and 16.67\% hard-to-learn); and a dataset containing the top 11\% of samples from all three categories.
+	We trained a preliminary model on the entire dataset for six epochs to classify samples as easy-to-learn, hard-to-learn, or ambiguous. Using the filtering function, we sorted by the confidence metric to filter by the hardest-to-learn and easiest-to-learn samples, and by the variability metric to filter by the most ambiguous samples. We then created nine new subsets after filtering the labeled data: a copy of the original dataset, but with shuffled samples; a randomly selected 33\% sample of the original dataset; three 33\% datasets, or one for the top 33\% of each of the categories; three 16.67\% + 16.67\% datasets, with the three possible combinations of the categories (i.e., 16.67\% easy-to-learn and 16.67\% hard-to-learn); and a dataset containing the top 11\% of samples from all three categories.
 	
 	\section{Findings}
 	
 	\subsection{Results}
 	
 	After training all nine models on the new datasets, we recorded their accuracy in labeling the in-distribution train set and the out-of-distribution dev and test sets.
-	
-	The model trained on the entire SNLI dataset had the highest out-of-distribution accuracies, while the model trained on easiest-to-learn samples had the highest in-distribution accuracy. The model trained on only the hardest-to-learn and most ambiguous samples had the lowest out-of-distribution accuracy, but the model trained on the hardest-to-learn samples had the lowest in-distribution accuracy. 
-	
-	We found that the model trained on ambiguous samples had comparable out-of-distribution accuracies to the entire dataset's, but poor in-distribution accuracy. Excluding the model trained on the whole dataset, the model with the highest overall accuracies was trained on the easiest-to-learn and most ambiguous samples. 
+
+	The model trained on the entire SNLI dataset had the highest out-of-distribution accuracies, while the model trained on easiest-to-learn samples had the highest in-distribution accuracy. The model trained on only the hardest-to-learn and most ambiguous samples had the lowest out-of-distribution accuracy, and the model trained on the hardest-to-learn samples had the lowest in-distribution accuracy. 
+
+	We found that the model trained on only the most ambiguous samples had comparable out-of-distribution accuracies to the entire dataset's, but poor in-distribution accuracy. Excluding the model trained on the entire dataset, the model with the highest overall accuracies was the one trained on the easiest-to-learn and most ambiguous samples. 
 	
 	\begin{table*}[!ht]
 		\centering
@@ -180,7 +180,7 @@
 	
 	\subsection{Mislabeled Data}
 	
-	The original Dataset Cartography paper discussed the idea of noisy data (mislabeled samples), which could be made easier to identify by filtering hard-to-learn samples. The SNLI Dataset classifies pairs of sentences as either entailment, neutral, or contradiction, but some samples with inaccurate gold labels could interfere with training and evaluation. While exploring some of the samples categorized as hard-to-learn, we found several mislabeled data points. We strongly suspect these were partially responsible for the poor performance of the models trained on subsets with the hardest-to-learn samples.
+	The original Dataset Cartography paper discussed the idea of noisy data (mislabeled samples), which could be more easily identified by filtering hard-to-learn samples. The SNLI Dataset classifies pairs of sentences as either entailment, neutral, or contradiction, but some samples with inaccurate gold labels could interfere with training and evaluation. While exploring some of the samples categorized as hard-to-learn, we found several mislabeled data points. We strongly suspect these were partially responsible for the poor performance of the models trained on subsets with the hardest-to-learn samples.
 	
 	\begin{table*}[!ht]
 		\centering
@@ -192,16 +192,16 @@
 			A man with a gray beard is standing next to a woman in a brown jacket. & Nobody is standing.                               & Neutral       & Contradiction \\
 			\hline
 		\end{tabular}
-		\caption{Some of the mislabeled samples in the SNLI train split.}
+		\caption{Mislabeled samples in the SNLI train split.}
 	\end{table*}
 	
 	\section{Conclusion}
 	
-	Our research demonstrated that a model trained on only certain samples in a dataset can achieve accuracy comparable to one trained on the entire dataset. In particular, models trained on subsets with a strong focus on ambiguous samples and little-to-no focus on hard-to-learn samples generally had excellent out-of-distribution performance, while those trained on easy-to-learn samples had near-perfect in-distribution performance. We can reasonably infer that evaluating a dataset by the quality of its samples through training dynamics can allow for smaller, more efficient models with equivalent - or potentially even superior - performance. 
+	Our research demonstrated that a model trained on only specific samples in a dataset could achieve accuracy comparable to one trained on the entire dataset. In particular, models trained on subsets with a strong focus on ambiguous samples and little-to-no focus on hard-to-learn samples generally had excellent out-of-distribution performance, while those trained on easy-to-learn samples had near-perfect in-distribution performance. We believe that evaluating and refining a dataset based on the training dynamics of its samples can allow for smaller, more efficient models with equivalent - or potentially even superior - performance. 
 	
 	\section{Further Research}
 	
-	The Dataset Cartography project has other useful applications in dataset and model construction. Not only can it be used to identify mislabeled or low-quality samples, but the filtering process could also be automated further to find an ideal ratio of easy-to-learn, hard-to-learn, and ambiguous samples for a particular dataset. Though the proof-of-concept project is currently constrained to a select few datasets, the method can be generalized to fields beyond natural language processing. The project is also only designed for use in data categorization projects. However, a similar process could potentially allow model engineers to evaluate the quality of data used to train generative adversarial networks by analyzing discriminative model results (\cite{1406.2661}).
+	The Dataset Cartography project has other applications in dataset and model construction. Not only can it be used to identify mislabeled or low-quality samples, but the filtering process could also be automated further to find an ideal ratio of easy-to-learn, hard-to-learn, and ambiguous samples for any particular dataset. Though this proof-of-concept project is currently constrained to a select few datasets, the method can be generalized to fields beyond natural language processing and categorization projects. A similar process could allow model engineers to evaluate the quality of data used to train generative adversarial networks (GANs) by analyzing the quality of generated samples used by the GAN's corresponding discriminator (\cite{1406.2661}).
 	
 	\section{Acknowledgments}
 	
