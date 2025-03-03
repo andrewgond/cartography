@@ -1,6 +1,6 @@
 # Dataset Cartography
 
-Institute for Computing in Research project. The paper is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputroDataMapsPaper.pdf), and the slideshow is available [here](https://raw.githubusercontent.com/okaycoffee/cartography/main/documents/BishnuGondoputroDataMapsSlides.pdf).
+Institute for Computing in Research project. The paper is available [here](https://raw.githubusercontent.com/andrewgond/cartography/main/documents/BishnuGondoputroDataMapsPaper.pdf), and the slideshow is available [here](https://raw.githubusercontent.com/andrewgond/cartography/main/documents/BishnuGondoputroDataMapsSlides.pdf).
 
 This repository can be used to build Data Maps, like [this one for SNLI using a RoBERTa-Large classifier](./sample/SNLI_RoBERTa.pdf).
 ![SNLI Data Map with RoBERTa-Large](./sample/SNLI_RoBERTa.png)
@@ -15,7 +15,7 @@ This repository is based on the [HuggingFace Transformers](https://github.com/hu
 Clone the repository with:
 
 ```
-git clone https://github.com/okaycoffee/cartography.git
+git clone https://github.com/andrewgond/cartography.git
 ```
 
 Enter the `cartography` directory with:
